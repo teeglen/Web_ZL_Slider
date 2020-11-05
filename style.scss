@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "微軟正黑體";
+}
+// 輪播圖大盒子
+#jerry-silder {
+    height: 100vh;
+    overflow: hidden;     // 溢出 隱藏
+    // 輪播圖項目
+    .jerry-item {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: none;
+        // 輪播圖片
+        img {
+          position: absolute;  
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          animation-name: jerryimg;
+          animation-duration: 0.8s;         // 動畫時間
+        }
+        // 輪播標題
+        h1 {
+          position: absolute;
+          color: white;
+          top: 100px;
+          left: 100px;
+          text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+          z-index: 2;
+          animation-name: jerryitem;
+          animation-duration: 0.8s;         // 動畫時間
+          animation-delay: 0.5s;
+          animation-fill-mode: backwards;
+        }
+        p {
+          position: absolute;
+          color: white;
+          top: 150px;
+          left: 100px;
+          animation-name: jerryitem;
+          animation-duration: 0.8s;         // 動畫時間
+          animation-delay: 0.5s;            // 動畫延遲
+          animation-fill-mode: backwards;   // 停留在動畫開始的畫面 (forwards 相反)
+        }
+    }
+    // 要顯示的項目
+    .jerry-active{
+        display: block;
+    }
+     // 大顆按鈕樣式
+     #jerry-up, #jerry-next {
+        width: 80px;
+        height: 150px;
+        background: #ffffff66;
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        transform: translateY(-50%);    //在往上位移自己大小的50%
+    }
+
+    #jerry-up {
+        left: 0;
+    }
+    #jerry-next {
+        right: 0;
+    }
+}
+
+
+
+// 動畫 animation 必須先額外設定動畫的效果
+// @關鍵影格 動畫名稱
+// 0% {} 開始時效果
+// 0% - 100% {}
+@keyframes jerryimg {
+    0% {transform: scale(1.3);}
+    50% {transform: scale(0.5);}
+    100% {transform: scale(1);}
+}
+
+@keyframes jerryitem {
+    0% {transform: translateX(-600px);}
+    100% {transform: translateX(1);}
+}
