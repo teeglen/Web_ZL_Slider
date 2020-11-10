@@ -76,6 +76,7 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  cursor: pointer;
 }
 
 #jerry-silder #jerry-up {
@@ -86,14 +87,41 @@
   right: 0;
 }
 
+#jerry-silder #jerry-buttons {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#jerry-silder #jerry-buttons .jerry-button {
+  width: 30px;
+  height: 30px;
+  background: #2e2d2d66;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+#jerry-silder #jerry-buttons .jerry-button-active {
+  -webkit-animation-name: jerrybutton;
+          animation-name: jerrybutton;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
 @-webkit-keyframes jerryimg {
   0% {
     -webkit-transform: scale(1.3);
             transform: scale(1.3);
   }
   50% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
   100% {
     -webkit-transform: scale(1);
@@ -107,8 +135,8 @@
             transform: scale(1.3);
   }
   50% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
   100% {
     -webkit-transform: scale(1);
@@ -135,6 +163,24 @@
   100% {
     -webkit-transform: translateX(1);
             transform: translateX(1);
+  }
+}
+
+@-webkit-keyframes jerrybutton {
+  0% {
+    background: #2e2d2d66;
+  }
+  100% {
+    background: #000;
+  }
+}
+
+@keyframes jerrybutton {
+  0% {
+    background: #2e2d2d66;
+  }
+  100% {
+    background: #000;
   }
 }
 /*# sourceMappingURL=style.css.map */

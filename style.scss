@@ -10,13 +10,13 @@
     overflow: hidden;     // 溢出 隱藏
     // 輪播圖項目
     .jerry-item {
-        position: relative;
+        position: relative;             //位置：相對配置
         height: 100%;
         width: 100%;
         display: none;
         // 輪播圖片
         img {
-          position: absolute;  
+          position: absolute;           //位置：絕對配置
           height: 100%;
           width: 100%;
           object-fit: cover;
@@ -25,7 +25,7 @@
         }
         // 輪播標題
         h1 {
-          position: absolute;
+          position: absolute;           //位置：絕對配置
           color: white;
           top: 100px;
           left: 100px;
@@ -69,6 +69,29 @@
     #jerry-next {
         right: 0;
     }
+    // 小顆按鈕樣式
+    #jerry-buttons {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .jerry-button {
+            width: 30px;
+            height: 30px;
+            background: #2e2d2d66;
+            display:inline-block;
+            border-radius: 50%;
+            margin: 0 8px;
+            cursor:pointer;             //滑鼠指標變手指
+        }
+
+        .jerry-button-active {
+            animation-name: jerrybutton;
+            animation-duration: 1s;         // 動畫時間
+            animation-fill-mode: forwards;   // 停留在動畫結束的畫面 (backwards相反)    
+        }
+    }
 }
 
 
@@ -88,3 +111,7 @@
     100% {transform: translateX(1);}
 }
 
+@keyframes jerrybutton {
+    0% {background: #2e2d2d66;}
+    100% {background: #000;}
+}

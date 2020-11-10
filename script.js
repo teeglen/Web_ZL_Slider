@@ -11,6 +11,7 @@ function btndown(){
     if (index == items.length) index=0;       // 如果編號超出範圍 編號歸零
     showItem();
     reset();
+    switchbutton();
 }
 
 // 按鈕函式：上一張
@@ -19,6 +20,7 @@ function btnup(){
     if (index ==-1) index = items.length-1 ;  // 如果編號超出範圍 編號等於 長度-1
     showItem();
     reset();
+    switchbutton();
 }
 
 down.onclick = btndown;         //點擊函式
@@ -44,4 +46,26 @@ var auto = setInterval(btndown,duration);
 function reset() {
     clearInterval(auto);                    // 清除時間
     auto = setInterval(btndown,duration);   // 重新自動播放
+}
+
+// 取得所有小按鈕
+var btns = document.getElementsByClassName("jerry-button");
+
+// 迴圈執行每顆按鈕點擊事情
+for (var i = 0; i < btns.length; i++) {
+    // 匿名函式 function() {}
+    btns[i].onclick = function() {
+        index = this.getAttribute("data-slider-item") - 1;      // 編號 = 點擊按鈕的屬性 - 1
+
+        showItem();
+        reset();
+        switchbutton();
+    }
+}
+
+function switchbutton() {
+    for (var i = 0; i<btns.length; i++) {
+        btns[i].classList.remove("jerry-button-active")
+    }
+    btns[index].classList.add("jerry-button-active")
 }
