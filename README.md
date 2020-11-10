@@ -7,7 +7,11 @@ https://teeglen.github.io/Web_ZL_Slider/
 # 使用說明
 
 ## CDN
+```
+    <link rel="stylesheet" href="https://teeglen.github.io/Web_ZL_Slider/style.css">
 
+    <script src="https://teeglen.github.io/Web_ZL_Slider/script.js"></script>
+```
 ## 架構
 
 ```
