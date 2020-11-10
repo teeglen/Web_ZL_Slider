@@ -1,21 +1,47 @@
-var up = document.getElementById ("jerry-up")
-var down = document.getElementById("jerry-next")
+var up = document.getElementById ("jerry-up")              // 上一張按鈕
+var down = document.getElementById("jerry-next")           // 下一張按鈕
 
-var items = document.getElementsByClassName("jerry-item")
+var items = document.getElementsByClassName("jerry-item")  // 所有項目
 
-var index = 0;
+var index = 0;                                             //編號
 
+// 按鈕函式：下一張
 function btndown(){
-    index++;
-    if (index == items.length) index=0;
-    console.log(index);
+    index++;                                  //編號遞增
+    if (index == items.length) index=0;       // 如果編號超出範圍 編號歸零
+    showItem();
+    reset();
 }
 
+// 按鈕函式：上一張
 function btnup(){
-    index--;
-    if (index ==-1) index = items.length -1;
-    console.log(index);
+    index--;                                  //編號遞減
+    if (index ==-1) index = items.length-1 ;  // 如果編號超出範圍 編號等於 長度-1
+    showItem();
+    reset();
 }
 
 down.onclick = btndown;         //點擊函式
 up.onclick = btnup;             //點擊函式
+
+// 顯示項目函式
+function showItem(){
+    // 迴圈執行：將每張項目的類別 jerry-active 移除
+    for (var i =0 ; i < items.length ; i++){
+        items[i].classList.remove("jerry-active")
+    }
+    // 將目前要顯示的橡木添加 jerry-active 類別
+    items[index].classList.add("jerry-active");
+}
+
+// 取得屬性("屬性名稱")
+var duration = document.getElementById("jerry-silder").getAttribute("jerry-slider-auto");
+
+// 設定間隔呼叫函式 (函式名稱，時間)
+var auto = setInterval(btndown,duration);
+
+// 重新設定自動播放時間
+function reset() {
+    clearInterval(auto);                    // 清除時間
+    auto = setInterval(btndown,duration);   // 重新自動播放
+}
